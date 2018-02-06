@@ -1,42 +1,30 @@
 package kata;
 
-import io.vavr.Tuple;
 import io.vavr.Tuple2;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import static io.vavr.Tuple.of;
 
 public class Roman {
 
-    private List<Tuple2<Integer, String>> numbers = List.of(
-            Tuple.of(1000, "M"),
-            Tuple.of(900, "CM"),
-            Tuple.of(500, "D"),
-            Tuple.of(400, "CD"),
-            Tuple.of(100, "C"),
-            Tuple.of(90, "XC"),
-            Tuple.of(50, "L"),
-            Tuple.of(40, "XL"),
-            Tuple.of(10, "X"),
-            Tuple.of(9, "IX"),
-            Tuple.of(5, "V"),
-            Tuple.of(4, "IV"),
-            Tuple.of(1, "I")
+    private List<Tuple2<Integer, String>> numbers = List.of(of(1000, "M"), of(900, "CM"), of(500, "D"), of(400, "CD"),
+            of(100, "C"), of(90, "XC"), of(50, "L"), of(40, "XL"),
+            of(10, "X"), of(9, "IX"), of(5, "V"), of(4, "IV"), of(1, "I")
     );
 
     public String toRoman(int number) {
         StringBuilder romanNumber = new StringBuilder();
         for (Tuple2<Integer, String> n : numbers) {
-            number = addAllOf(number, romanNumber, n._1, n._2);
+            number = addAllOf(number, romanNumber, n);
         }
         return romanNumber.toString();
     }
 
-    private int addAllOf(int number, StringBuilder romanNumber, int powerOfTen, String romanDigit) {
-        while (number >= powerOfTen) {
-            romanNumber.append(romanDigit);
-            number = number - powerOfTen;
+    private int addAllOf(int number, StringBuilder romanNumber, Tuple2<Integer, String> t)  {
+        while (number >= t._1) {
+            romanNumber.append(t._2);
+            number = number - t._1;
         }
         return number;
     }
