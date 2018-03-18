@@ -19,6 +19,7 @@ public class ValidatorTest  {
     Validator letterValidator = new Validator.LetterValidator();
     assertThat(letterValidator.validate("Q")).isEmpty();
     assertThat(letterValidator.validate("q")).isEmpty();
+    assertThat(letterValidator.validate("é")).isEmpty();
   }
 
   @Test public void
