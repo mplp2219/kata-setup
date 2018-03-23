@@ -2,26 +2,28 @@ package kata;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.stream.IntStream;
 
 import org.junit.Test;
 
 public class Betwen0And37RandomizerIT {
 
+	private Between0And37Randomizer javaRandomizer = new Between0And37Randomizer();
+
 	@Test
-	public void randomizerGeneratesRandomNumbersBetween0And37() throws Exception {
-		Between0And37Randomizer javaRandomizer = new Between0And37Randomizer();
-		
-		List<Integer> list = new ArrayList<Integer>();
-		for (int i = 0; i < 10000; i++) {
-			int nextInt = javaRandomizer.getRouletteResult();
-			
-			list.add(nextInt);
-			assertThat(nextInt).isGreaterThanOrEqualTo(0);
-			assertThat(nextInt).isLessThanOrEqualTo(37);
-		}
-		assertThat(list).contains(36);
-		assertThat(list).contains(0);
+	public void numbersAreNeverOutsideBoundsOf0And37() throws Exception {
+		assertThat(generateResults().min().getAsInt()).isEqualTo(0);
+		assertThat(generateResults().max().getAsInt()).isEqualTo(37);
 	}
+
+	@Test
+	public void allNumbersOccur() {
+		IntStream uniqueResults = generateResults().distinct();
+		assertThat(uniqueResults).size().isEqualTo(38);
+	}
+
+	private IntStream generateResults() {
+		return IntStream.range(0, 10000).map(i -> javaRandomizer.getRouletteResult());
+	}
+
 }
