@@ -2,8 +2,8 @@ package kata;
 
 public class Roulette {
 
-  private Ball ball;
-  private Randomizer randomizer;
+  private final Ball ball;
+  private final Randomizer randomizer;
 
   public Roulette(Ball ball, Randomizer randomizer) {
     this.ball = ball;

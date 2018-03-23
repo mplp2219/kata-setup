@@ -3,7 +3,7 @@ package kata;
 public class Ball {
 
   private static final int DEFAULT_TIME = 20000;
-  private int timeInMilliseconds;
+  private final int timeInMilliseconds;
 
   public Ball(int timeInMilliseconds) {
     this.timeInMilliseconds = timeInMilliseconds;
