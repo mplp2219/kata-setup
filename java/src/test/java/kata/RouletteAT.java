@@ -1,13 +1,12 @@
 package kata;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import org.junit.Test;
-
 import kata.Result.Color;
+import org.junit.jupiter.api.Test;
 
 public class RouletteAT {
   private Randomizer randomizer = mock(Randomizer.class);
@@ -30,7 +29,7 @@ public class RouletteAT {
 
     Result actualResult = roulette.playGame();
 
-      assertEquals("0", actualResult.number);
+    assertEquals("0", actualResult.number);
 
     assertEquals(Color.GREEN, actualResult.color);
   }

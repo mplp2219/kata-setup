@@ -1,10 +1,10 @@
 package kata;
 
+import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.stream.IntStream;
-
-import org.junit.Test;
 
 public class Betwen0And37RandomizerIT {
 

@@ -1,15 +1,13 @@
 package kata;
 
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ResultTest {
-
-    @Rule
-    public ExpectedException expect = ExpectedException.none();
 
     @Test
     public void the37CorrespondsTo00() {
@@ -49,20 +47,20 @@ public class ResultTest {
     public void itThrowsExceptionWhenTheRandomizerIsGreaterThan37()
             throws Exception {
 
-        expect.expect(RouletteException.class);
-        expect.expectMessage("Result can't be 38");
-
-        new Result(38);
+        RouletteException exception = assertThrows(
+                RouletteException.class,
+                () -> new Result(38)
+        );
+        assertEquals("Result can't be 38", exception.getMessage());
     }
 
     @Test
     public void itThrowsExceptionWhenTheRandomizerIsLesserThan0()
             throws Exception {
 
-        expect.expect(RouletteException.class);
-        expect.expectMessage("Result can't be -1");
-
-        new Result(-1);
+        RouletteException exception = assertThrows(RouletteException.class,
+                () -> new Result(-1));
+        assertEquals("Result can't be -1", exception.getMessage());
 
     }
 
