@@ -14,7 +14,7 @@ public class ResultTest {
     @Test
     public void the37CorrespondsTo00() {
         Result result = new Result(37);
-        assertThat(result.getNumber()).isEqualTo("00");
+        assertThat(result.number).isEqualTo("00");
     }
 
     @Test()
@@ -67,12 +67,13 @@ public class ResultTest {
     }
 
     private void assertColorResult(int randomizerValue, Result.Color expectedColor) {
-        Result.Color color = new Result(randomizerValue).getColor();
+
+        Result.Color color = new Result(randomizerValue).color;
         assertThat(color).isEqualTo(expectedColor);
 
     }
 
     private void assertNumberResult(int randomizerValue, String expectedNumber) {
-        assertThat(new Result(randomizerValue).getNumber()).isEqualTo(expectedNumber);
+        assertThat(new Result(randomizerValue).number).isEqualTo(expectedNumber);
     }
 }

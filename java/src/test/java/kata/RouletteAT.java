@@ -30,8 +30,9 @@ public class RouletteAT {
 
     Result actualResult = roulette.playGame();
 
-    assertEquals("0", actualResult.getNumber());
-    assertEquals(Color.GREEN, actualResult.getColor());
+      assertEquals("0", actualResult.number);
+
+    assertEquals(Color.GREEN, actualResult.color);
   }
 
 }

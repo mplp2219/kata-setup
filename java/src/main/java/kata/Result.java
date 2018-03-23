@@ -6,8 +6,8 @@ public class Result {
       GREEN, RED, BLACK;
     }
 
-    private final String number;
-    private final Result.Color color;
+    public final String number;
+    public final Result.Color color;
 
     public Result(int intResult) {
 		if (intResult < 0 || intResult > 37)
@@ -26,13 +26,4 @@ public class Result {
       return intResult % 2 == 0 ? Color.BLACK : Color.RED;
     }
 
-    public String getNumber() {
-      return number;
-    }
-
-    public Result.Color getColor() {
-      return this.color;
-
-    }
-
-  }
+}
