@@ -1,31 +1,33 @@
 package kata;
 
-import io.vavr.Tuple2;
-
-import java.util.List;
-
-import static io.vavr.Tuple.of;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class Roman {
 
-    private List<Tuple2<Integer, String>> numbers = List.of(of(1000, "M"), of(900, "CM"), of(500, "D"), of(400, "CD"),
-            of(100, "C"), of(90, "XC"), of(50, "L"), of(40, "XL"),
-            of(10, "X"), of(9, "IX"), of(5, "V"), of(4, "IV"), of(1, "I")
-    );
+    TreeMap<Integer, String> nums = new TreeMap<>() {{
+        put(1000, "M");
+        put(900, "CM");
+        put(500, "D");
+        put(400, "CD");
+        put(100, "C");
+        put(90, "XC");
+        put(50, "L");
+        put(40, "XL");
+        put(10, "X");
+        put(9, "IX");
+        put(5, "V");
+        put(4, "IV");
+        put(1, "I");
+    }};
 
     public String toRoman(int number) {
         StringBuilder romanNumber = new StringBuilder();
-        for (Tuple2<Integer, String> n : numbers) {
-            number = addAllOf(number, romanNumber, n);
+        while (number >= 1) {
+            Map.Entry<Integer, String> correspondence = nums.floorEntry(number);
+            romanNumber.append(correspondence.getValue());
+            number -= correspondence.getKey();
         }
         return romanNumber.toString();
-    }
-
-    private int addAllOf(int number, StringBuilder romanNumber, Tuple2<Integer, String> t)  {
-        while (number >= t._1) {
-            romanNumber.append(t._2);
-            number = number - t._1;
-        }
-        return number;
     }
 }
