@@ -19,7 +19,6 @@ public class ValidatorTest  {
     Validator letterValidator = new Validator.LetterValidator();
     assertThat(letterValidator.validate("Q")).isEmpty();
     assertThat(letterValidator.validate("q")).isEmpty();
-    assertThat(letterValidator.validate("é")).isEmpty();
   }
 
   @Test public void
@@ -28,7 +27,22 @@ public class ValidatorTest  {
     assertThat(letterValidator.validate("")).contains("Password must contain a letter");
     assertThat(letterValidator.validate("6")).contains("Password must contain a letter");
   }
-  
+
+  @Test public void
+  digitValidatorAddsErrorWhenThereIsNoDigit() throws Exception {
+    Validator digitValidator = new Validator.DigitValidator();
+    assertThat(digitValidator.validate("")).contains("Password needs to contain atleast one digit");
+    assertThat(digitValidator.validate("a")).contains("Password needs to contain atleast one digit");
+  }
+
+  @Test public void
+  digitValidatorPassesWhenThereIsADigit() throws Exception {
+    Validator digitValidator = new Validator.DigitValidator();
+    assertThat(digitValidator.validate("0")).isEmpty();
+    assertThat(digitValidator.validate("5")).isEmpty();
+    assertThat(digitValidator.validate("9")).isEmpty();
+  }
+
   @Test public void 
   lenghtValidatorPassesWhenStringIsEqualOrLongerThanLength() throws Exception {
     Validator lengthValidator = new Validator.LengthValidator(3);
