@@ -4,15 +4,18 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ResultTest {
 
-
     @Rule
     public ExpectedException expect = ExpectedException.none();
+
+    @Test
+    public void the37CorrespondsTo00() {
+        Result result = new Result(37);
+        assertThat(result.getNumber()).isEqualTo("00");
+    }
 
     @Test()
     public void theResultIsAlwaysBetween00and36() throws Exception {
@@ -24,22 +27,22 @@ public class ResultTest {
 
     @Test
     public void theColorOf0and00IsGreen() throws Exception {
-        assertCorlorResult(0, Result.Color.GREEN);
-        assertCorlorResult(37, Result.Color.GREEN);
+        assertColorResult(0, Result.Color.GREEN);
+        assertColorResult(37, Result.Color.GREEN);
     }
 
     @Test
     public void theColorOfEvenNumbersIsBlack() throws Exception {
-        assertCorlorResult(2, Result.Color.BLACK);
-        assertCorlorResult(14, Result.Color.BLACK);
-        assertCorlorResult(36, Result.Color.BLACK);
+        assertColorResult(2, Result.Color.BLACK);
+        assertColorResult(14, Result.Color.BLACK);
+        assertColorResult(36, Result.Color.BLACK);
     }
 
     @Test
     public void theColorOfOddNumbersIsRed() throws Exception {
-        assertCorlorResult(1, Result.Color.RED);
-        assertCorlorResult(7, Result.Color.RED);
-        assertCorlorResult(35, Result.Color.RED);
+        assertColorResult(1, Result.Color.RED);
+        assertColorResult(7, Result.Color.RED);
+        assertColorResult(35, Result.Color.RED);
     }
 
     @Test
@@ -63,12 +66,13 @@ public class ResultTest {
 
     }
 
-    private void assertCorlorResult(int randomizerValue, Result.Color expectedColor) {
-        assertEquals(expectedColor, new Result(randomizerValue).getColor());
+    private void assertColorResult(int randomizerValue, Result.Color expectedColor) {
+        Result.Color color = new Result(randomizerValue).getColor();
+        assertThat(color).isEqualTo(expectedColor);
 
     }
 
     private void assertNumberResult(int randomizerValue, String expectedNumber) {
-        assertEquals(expectedNumber, new Result(randomizerValue).getNumber());
+        assertThat(new Result(randomizerValue).getNumber()).isEqualTo(expectedNumber);
     }
 }

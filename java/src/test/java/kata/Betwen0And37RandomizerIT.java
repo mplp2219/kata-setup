@@ -17,7 +17,7 @@ public class Betwen0And37RandomizerIT {
 	}
 
 	@Test
-	public void allNumbersOccur() {
+	public void allNumbersOccur() throws Exception {
 		IntStream uniqueResults = generateResults().distinct();
 		assertThat(uniqueResults).size().isEqualTo(38);
 	}
