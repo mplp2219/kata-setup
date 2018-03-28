@@ -15,7 +15,7 @@ interface Validator {
 
 
         private boolean containsLetter(String password) {
-            return password.matches(".*[a-zA-Z].*");
+            return password.matches(".*[a-zA-Zéèêôà].*");
         }
 
 
