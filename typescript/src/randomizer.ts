@@ -1,5 +1,5 @@
 export class Randomizer {
   getValue() {
-    return 0;
+    return Math.floor(Math.random() * 38);
   }
 }
