@@ -1,8 +1,9 @@
 import {expect} from 'chai';
 import * as sinon from 'sinon';
 import {Randomizer} from "../src/randomizer";
-import {Color, Roulette} from "../src/roulette";
+import {Roulette} from "../src/roulette";
 import {Waiter} from "../src/waiter";
+import {Color} from "../src/roulette-result";
 
 describe('Roulette', () => {
   it('returns a random roulette result', () => {
