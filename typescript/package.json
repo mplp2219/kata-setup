@@ -54,5 +54,8 @@
     ],
     "reporter": [],
     "all": true
+  },
+  "dependencies": {
+    "sinon": "^6.0.0"
   }
 }
