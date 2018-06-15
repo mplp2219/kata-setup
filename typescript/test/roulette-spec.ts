@@ -3,15 +3,18 @@ import * as sinon from 'sinon';
 import {Randomizer} from "../src/randomizer";
 import {Roulette} from "../src/roulette";
 import {Waiter} from "../src/waiter";
+import {RouletteResult} from "../src/roulette-result";
 
 describe('Roulette', () => {
   it('returns a random roulette result', () => {
     let waiter = {wait: sinon.spy()};
-    const roulette = new Roulette(waiter as Waiter, new Randomizer());
+    let randomizer = {getValue: sinon.stub().returns(0)};
+    const roulette = new Roulette(waiter as Waiter, randomizer);
     const result = roulette.play()
-    expect(result).greaterThan(-1)
-    expect(result).lessThan(37)
+    expect(result).eql(new RouletteResult(0))
     sinon.assert.calledOnce(waiter.wait)
   });
+
+
 
 });
