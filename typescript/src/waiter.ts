@@ -1,6 +1,6 @@
 export class Waiter {
 
-  constructor(private timeInMillis: number) {
+  constructor(private timeInMillis: number = 20000) {
   }
 
   wait(): Promise<void> {
