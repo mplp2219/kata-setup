@@ -1,18 +1,13 @@
 import {expect} from 'chai';
-import * as sinon from 'sinon';
-import {Randomizer} from "../src/randomizer";
-import {Roulette} from "../src/roulette";
-import {Waiter} from "../src/waiter";
-import {Color} from "../src/roulette-result";
+import {createRouletteApplication} from "../src";
 
-describe('Roulette', () => {
-  it('returns a random roulette result', () => {
-    let waiter = new Waiter();
-    const roulette = new Roulette(waiter, new Randomizer());
-    const {number, color} = roulette.play()
-    expect(number).greaterThan(-1)
-    expect(number).lessThan(37)
-    expect(color).instanceOf(Color);
+describe('Roulette application', () => {
+  it('returns a roulette result after some time', async () => {
+    const roulette = createRouletteApplication();
+    const rouletteResult = await roulette.play()
+    expect(rouletteResult.number).gte(0)
+    expect(rouletteResult.number).lte(37)
+    expect(['red', 'black', 'green']).includes(rouletteResult.color);
   }).timeout(21000);
 
 
