@@ -6,9 +6,9 @@ export enum Color {
 }
 
 export class RouletteResult {
-  public color: Color;
+  public readonly color: Color;
 
-  constructor(public number: number) {
+  constructor(public readonly number: number) {
     this.color = this.calculateColor(number);
   }
 

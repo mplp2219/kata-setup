@@ -7,8 +7,8 @@ export class Roulette {
   constructor(private waiter: Waiter, private randomizer: Randomizer) {
   }
 
-  play(): RouletteResult {
-    this.waiter.wait()
+  async play(): Promise<RouletteResult> {
+    await this.waiter.wait()
     let value = this.randomizer.getValue();
     return new RouletteResult(value);
   }
