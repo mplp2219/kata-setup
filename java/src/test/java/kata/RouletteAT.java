@@ -9,7 +9,7 @@ import kata.Result.Color;
 import org.junit.jupiter.api.Test;
 
 public class RouletteAT {
-  private Randomizer randomizer = mock(Randomizer.class);
+  private Between0And37Randomizer randomizer = mock(Between0And37Randomizer.class);
   private Ball ball = mock(Ball.class);
 
   @Test
@@ -23,7 +23,7 @@ public class RouletteAT {
 
   @Test()
   public void itProvidesAResultWithColor() throws Exception {
-    Randomizer randomizer1 = mock(Randomizer.class);
+    Between0And37Randomizer randomizer1 = mock(Between0And37Randomizer.class);
     when(randomizer1.getRouletteResult()).thenReturn(0);
     Roulette roulette = new Roulette(ball, randomizer1);
 
