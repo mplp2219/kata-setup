@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.stream.IntStream;
 
-public class RandomizerIT {
+public class JavaRandomizerIT {
 
 	private JavaRandomizer javaRandomizer = new JavaRandomizer();
 

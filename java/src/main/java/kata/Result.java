@@ -15,7 +15,6 @@ public class Result {
       this.color = calculateColor(intResult);
       this.number = calculateNumber(intResult);
     }
-
     private String calculateNumber(int intResult) {
       return intResult == 37 ? "00" : intResult + "";
     }
