@@ -23,6 +23,8 @@
     "watch:test": "npm run test -- --watch-extensions ts  --watch"
   },
   "dependencies": {
+    "@types/cucumber": "^4.0.4",
+    "cucumber": "^5.1.0",
     "lodash": "^4.17.5"
   },
   "devDependencies": {
