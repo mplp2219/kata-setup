@@ -20,7 +20,8 @@
     "test": "mocha --require ts-node/register --recursive 'test/**/*-spec.ts'",
     "coverage": "nyc --reporter=text --reporter=html mocha --require ts-node/register --recursive 'test/**/*-spec.ts'",
     "watch": "npm run build -- --watch",
-    "watch:test": "npm run test -- --watch-extensions ts  --watch"
+    "watch:test": "npm run test -- --watch-extensions ts  --watch",
+    "cucumber": "npm run build && cucumber-js"
   },
   "dependencies": {
     "@types/cucumber": "^4.0.4",
