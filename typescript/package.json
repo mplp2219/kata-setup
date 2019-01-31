@@ -24,15 +24,15 @@
     "cucumber": "npm run build && cucumber-js"
   },
   "dependencies": {
-    "@types/cucumber": "^4.0.4",
-    "cucumber": "^5.1.0",
     "lodash": "^4.17.5"
   },
   "devDependencies": {
+    "@types/cucumber": "^4.0.4",
     "@types/chai": "^4.1.2",
     "@types/mocha": "^2.2.48",
     "@types/node": "^9.4.2",
     "chai": "^4.1.2",
+    "cucumber": "^5.1.0",
     "mocha": "^5.0.0",
     "nyc": "^11.4.1",
     "rimraf": "^2.6.2",
