@@ -1,7 +1,6 @@
 <?php
 spl_autoload_register(function ($class) {
     $path = realpath(__DIR__."/../src");
-    var_dump($path);
     $directory = new RecursiveDirectoryIterator($path);
     $dirIter = new RecursiveIteratorIterator($directory);
     /** @var SplFileInfo $file */
